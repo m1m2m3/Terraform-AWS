@@ -1,6 +1,6 @@
 provider "aws" {
-  access_key = "AKIAJ2WKQHNT4L7UEMVQ"
-  secret_key = "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"
+  access_key = "xxxxxxxxxxx"
+  secret_key = "xxxxxxxxxxx"
   region     = "us-east-1"
 }
 resource "aws_instance" "Github" {
