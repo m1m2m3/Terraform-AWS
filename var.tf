@@ -17,3 +17,19 @@ variable "azs" {
 }
 
 # for making AZ variablised use Data Source Availability
+#variable for main.tf file
+variable "region" {
+  default= "us-east-2"
+}
+
+variable "vpc_id" {
+  default="vpc-a31117d9"
+}
+
+variable "subnet_id" {
+  default="subnet-b66b9ce9"
+}
+
+variable "security_group_id" {
+  default="sg-0c98bd6fb48255ffc"
+}
