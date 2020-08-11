@@ -1,24 +1,20 @@
 provider "aws" {
-  access_key = "******"
-  secret_key = "******"
-  region     = "us-east-1"
+  access_key = "*****"
+  secret_key = "*****"
+  region     = "${var.region}"
 }
 data "aws_vpc" "myvpc" {
   id = "${var.vpc_id}"
-}
-data "aws_subnet" "default" {
-  id = "${var.subnet_id}"
 }
 data "aws_security_group" "defaily" {
   id     = "${var.security_group_id}"
   vpc_id = "${data.aws_vpc.myvpc.id}"
 }
-
 resource "aws_instance" "github" {
   count                  = "${var.instance_count}"
   ami                    = "${var.aws_ami_id}"
   instance_type          = "${var.instance_type}"
-  subnet_id              = "${var.subnet_id}"
+  subnet_id              = "${element(var.subnet_ids, count.index)}"
   vpc_security_group_ids = ["${data.aws_security_group.defaily.id}"]
   tags = {
     Name = "Github-enterprise-${timestamp()}"
