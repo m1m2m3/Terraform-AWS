@@ -1,3 +1,7 @@
+variable "region" {
+  default="us-east-1"
+}
+
 variable "instance_count" {
   description = "Number of instances to launch"
   type        = number
@@ -30,11 +34,11 @@ variable "ec2_ebs_volume_size" {
 }
 
 variable "vpc_id" {
-  default="vpc-00ea3668106f9d79c"
+  default="vpc-a31117d9"
 }
-variable "subnet_id" {
-  default="subnet-0523f4ff338a37e82"
+variable "subnet_ids" {
+  default= [ "subnet-09a35328", "subnet-26ce2440" ]
 }
 variable "security_group_id" {
-  default="sg-0bbeec86013434a9c"
+  default="sg-0c98bd6fb48255ffc"
 }
