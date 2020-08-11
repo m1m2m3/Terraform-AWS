@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Store private IP
+    shell:
+       cmd: "cat terraform.tfstate"
+       chdir: "/home/ec2-user/terraform/"
+    register: result
+  - debug:
+      var: result
+
+  - name: register json result
+    set_fact:
+       json_result_data: "{{ result.stdout | from_json  }}"
+
+  - name: register IP
+    set_fact:
+       aws_private_ip: "{{ json_result_data.resources[3]['instances'][0]['attributes']['private_ip'] }}"
+  - debug:
+      var: aws_private_ip
+
+  - name: register IP
+    set_fact:
+       aws_private_ip: "{{ json_result_data.resources[3]['instances'][1]['attributes']['private_ip'] }}"
+  - debug:
+      var: aws_private_ip
