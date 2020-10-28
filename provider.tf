@@ -20,3 +20,5 @@ resource "aws_subnet" "subnets" {
     Name = "Subnet-${count.index+1}"
   }
 }
+#resource "aws_subnet" "subnets" {
+#  count = "${length(var.a
